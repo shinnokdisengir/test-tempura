@@ -33,9 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,RootInstaller {
     /// install the root of the app
     /// this method is called by the navigator when needed
     func installRoot(identifier: RouteElementIdentifier, context: Any?, completion: () -> ()) -> Bool {
-      if identifier == Screen.list.rawValue {
-        let listViewController = RootViewController(store: self.store, localState: ListLocalState())
-        self.window?.rootViewController = listViewController
+      if identifier == Screen.root.rawValue {
+        let rootViewController = RootViewController(store: self.store, localState: ListLocalState())
+        self.window?.rootViewController = rootViewController
         completion()
         return true
       }

@@ -33,6 +33,8 @@ class RootView: UIView, ViewControllerModellableView {
   
   // MARK: - Setup
   func setup() {
+    print("setup")
+    debugPrint("setup")
     self.scrollView.isPagingEnabled = true
     self.scrollView.isScrollEnabled = false
     

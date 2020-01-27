@@ -13,6 +13,7 @@ class RootViewController: ViewControllerWithLocalState<RootView> {
   
   
   override func setup() {
+    debugPrint("controller setup")
 //    self.add(self.childViewController, in: self.rootView.childViewContainer)
   }
   
@@ -63,6 +64,7 @@ extension RootViewController: RoutableWithConfiguration {
     
     var navigationConfiguration: [NavigationRequest: NavigationInstruction] {
       return [
+//        .show(Screen.root): .dismissModally(behaviour: .hard),
         .hide(Screen.root): .dismissModally(behaviour: .hard)
       ]
     }
