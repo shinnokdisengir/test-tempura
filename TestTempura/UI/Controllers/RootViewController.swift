@@ -9,17 +9,20 @@
 import Foundation
 import Tempura
 
+// MARK: - Local State
+
+struct RootLocalState: LocalState {
+    //  var selectedSection: RootView.Section = .todo
+}
+
 class RootViewController: ViewControllerWithLocalState<RootView> {
-  
-  
-  override func setup() {
-    debugPrint("controller setup")
+    override func setup() {
 //    self.add(self.childViewController, in: self.rootView.childViewContainer)
-  }
-  
-  // listen for interactions from the view
-  // dispatch actions or change the local state in response to user actions
-  override func setupInteraction() {
+    }
+
+    // listen for interactions from the view
+    // dispatch actions or change the local state in response to user actions
+    override func setupInteraction() {
 //    self.rootView.didToggleItem = { [unowned self] id in
 //      self.dispatch(ToggleItem(itemID: id))
 //    }
@@ -48,24 +51,31 @@ class RootViewController: ViewControllerWithLocalState<RootView> {
 //    self.rootView.didTapClearItems = { [unowned self] in
 //      self.dispatch(DeleteArchivedItems())
 //    }
-  }
+    }
 }
-
-// MARK: - Local State
-struct ListLocalState: LocalState {
-//  var selectedSection: RootView.Section = .todo
-}
-
 
 extension RootViewController: RoutableWithConfiguration {
     var routeIdentifier: RouteElementIdentifier {
         return Screen.root.rawValue
     }
-    
+
     var navigationConfiguration: [NavigationRequest: NavigationInstruction] {
-      return [
+        return [
 //        .show(Screen.root): .dismissModally(behaviour: .hard),
-        .hide(Screen.root): .dismissModally(behaviour: .hard)
-      ]
+            .show(Screen.login): .presentModally { [unowned self] _ in
+                let c = WelcomeViewController(store: self.store)
+                c.modalPresentationStyle = .overCurrentContext
+                return c
+//            if let editID = context as? String {
+//              let ai = AddItemViewController(store: self.store, itemIDToEdit: editID)
+//              ai.modalPresentationStyle = .overCurrentContext
+//              return ai
+//            } else {
+//              let ai = AddItemViewController(store: self.store)
+//              ai.modalPresentationStyle = .overCurrentContext
+//              return ai
+//            }
+            },
+        ]
     }
 }

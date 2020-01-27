@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import Katana
-import Tempura
 
 // MARK: - Screens identifiers
 
@@ -16,6 +14,9 @@ enum Screen: String {
     case root
     case home
     case login
-    case wizard
+    case welcome
+    case push
+    case geo
+    case register
     case list
 }

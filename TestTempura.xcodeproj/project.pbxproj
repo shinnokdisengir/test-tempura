@@ -15,6 +15,12 @@
 		1A1E8D8323DF048200360EFE /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1E8D8223DF048200360EFE /* RootViewController.swift */; };
 		1A1E8D8523DF0DF000360EFE /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1E8D8423DF0DF000360EFE /* RootView.swift */; };
 		1A1E8D8823DF11BA00360EFE /* UIControl+TargetActionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1E8D8723DF11BA00360EFE /* UIControl+TargetActionable.swift */; };
+		1A1E8D8A23DF246600360EFE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1E8D8923DF246600360EFE /* WelcomeViewController.swift */; };
+		1A1E8D8C23DF247B00360EFE /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1E8D8B23DF247B00360EFE /* WelcomeView.swift */; };
+		1A1E8D8E23DF255200360EFE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1E8D8D23DF255200360EFE /* RegistrationViewController.swift */; };
+		1A1E8D9023DF256900360EFE /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1E8D8F23DF256900360EFE /* RegistrationView.swift */; };
+		1A1E8D9223DF257E00360EFE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1E8D9123DF257E00360EFE /* LoginViewController.swift */; };
+		1A1E8D9423DF259100360EFE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1E8D9323DF259100360EFE /* LoginView.swift */; };
 		1AE416E323DEDC89001CFFAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE416E223DEDC89001CFFAC /* AppDelegate.swift */; };
 		1AE416EA23DEDC89001CFFAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AE416E823DEDC89001CFFAC /* Main.storyboard */; };
 		1AE416EC23DEDC8C001CFFAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AE416EB23DEDC8C001CFFAC /* Assets.xcassets */; };
@@ -52,6 +58,12 @@
 		1A1E8D8223DF048200360EFE /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		1A1E8D8423DF0DF000360EFE /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		1A1E8D8723DF11BA00360EFE /* UIControl+TargetActionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+TargetActionable.swift"; sourceTree = "<group>"; };
+		1A1E8D8923DF246600360EFE /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		1A1E8D8B23DF247B00360EFE /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		1A1E8D8D23DF255200360EFE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		1A1E8D8F23DF256900360EFE /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		1A1E8D9123DF257E00360EFE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1A1E8D9323DF259100360EFE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1AE416DF23DEDC89001CFFAC /* TestTempura.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTempura.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AE416E223DEDC89001CFFAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AE416E923DEDC89001CFFAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -148,8 +160,8 @@
 		1A1E8D8123DF047100360EFE /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				1A1E8D8223DF048200360EFE /* RootViewController.swift */,
-				1A1E8D8423DF0DF000360EFE /* RootView.swift */,
+				1A1E8D9623DF25AC00360EFE /* Views */,
+				1A1E8D9523DF25A600360EFE /* Controllers */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -160,6 +172,28 @@
 				1A1E8D8723DF11BA00360EFE /* UIControl+TargetActionable.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1A1E8D9523DF25A600360EFE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1A1E8D9123DF257E00360EFE /* LoginViewController.swift */,
+				1A1E8D8D23DF255200360EFE /* RegistrationViewController.swift */,
+				1A1E8D8923DF246600360EFE /* WelcomeViewController.swift */,
+				1A1E8D8223DF048200360EFE /* RootViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1A1E8D9623DF25AC00360EFE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1A1E8D9323DF259100360EFE /* LoginView.swift */,
+				1A1E8D8F23DF256900360EFE /* RegistrationView.swift */,
+				1A1E8D8B23DF247B00360EFE /* WelcomeView.swift */,
+				1A1E8D8423DF0DF000360EFE /* RootView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		1AE416D623DEDC89001CFFAC = {
@@ -187,11 +221,11 @@
 		1AE416E123DEDC89001CFFAC /* TestTempura */ = {
 			isa = PBXGroup;
 			children = (
-				1A1E8D8623DF11A100360EFE /* Utilities */,
 				1A1E8D8123DF047100360EFE /* UI */,
 				1A1E8D7823DEF78D00360EFE /* Dependencies */,
 				1A1E8D7B23DEFCBD00360EFE /* Navigation */,
 				1A1E8D7223DEF1BC00360EFE /* State */,
+				1A1E8D8623DF11A100360EFE /* Utilities */,
 				1AE416E223DEDC89001CFFAC /* AppDelegate.swift */,
 				1AE416E823DEDC89001CFFAC /* Main.storyboard */,
 				1AE416EB23DEDC8C001CFFAC /* Assets.xcassets */,
@@ -481,13 +515,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A1E8D9223DF257E00360EFE /* LoginViewController.swift in Sources */,
 				1A1E8D7723DEF46000360EFE /* AuthModel.swift in Sources */,
 				1AE416E323DEDC89001CFFAC /* AppDelegate.swift in Sources */,
+				1A1E8D9423DF259100360EFE /* LoginView.swift in Sources */,
 				1A1E8D7D23DEFCD900360EFE /* AppNavigation.swift in Sources */,
+				1A1E8D9023DF256900360EFE /* RegistrationView.swift in Sources */,
 				1A1E8D8023DEFF3D00360EFE /* AuthActions.swift in Sources */,
 				1A1E8D8523DF0DF000360EFE /* RootView.swift in Sources */,
+				1A1E8D8C23DF247B00360EFE /* WelcomeView.swift in Sources */,
+				1A1E8D8E23DF255200360EFE /* RegistrationViewController.swift in Sources */,
 				1A1E8D8823DF11BA00360EFE /* UIControl+TargetActionable.swift in Sources */,
 				1A1E8D7A23DEF7B400360EFE /* DependenciesContainer.swift in Sources */,
+				1A1E8D8A23DF246600360EFE /* WelcomeViewController.swift in Sources */,
 				1A1E8D8323DF048200360EFE /* RootViewController.swift in Sources */,
 				1A1E8D7423DEF3E500360EFE /* AppState.swift in Sources */,
 			);
