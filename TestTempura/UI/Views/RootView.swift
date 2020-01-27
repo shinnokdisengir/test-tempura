@@ -38,8 +38,6 @@ extension RootView {
 class RootView: UIView, ViewControllerModellableView {
     // MARK: - Subviews
     
-    var todoButton: UIButton = UIButton(type: .custom)
-    var archiveButton: UIButton = UIButton(type: .custom)
     var actionButton: UIButton = UIButton(type: .custom)
     var scrollView: UIScrollView = UIScrollView()
     var sendToArchiveButton: UIButton = UIButton(type: .custom)
@@ -48,14 +46,7 @@ class RootView: UIView, ViewControllerModellableView {
     
     // MARK: - Interactions
     
-    var didTapAddItem: Interaction?
-    var didTapClearItems: Interaction?
-    var didTapEditItem: ((String) -> ())?
-    var didToggleItem: ((String) -> ())?
-    var didUnarchiveItem: ((String) -> ())?
-    var didTapTodoSection: Interaction?
-    var didTapCompletedSection: Interaction?
-    var didTapArchive: (([String]) -> ())?
+    var didWizard: Interaction?
     
     // MARK: - Setup
     
@@ -66,20 +57,21 @@ class RootView: UIView, ViewControllerModellableView {
         
         self.actionButton.on(.touchUpInside) { [unowned self] _ in
             guard let model = self.model else { return }
+            self.didWizard?()
         }
         
-        self.addSubview(self.scrollView)
-        self.addSubview(self.todoButton)
-        self.addSubview(self.archiveButton)
+//        self.addSubview(self.scrollView)
         self.addSubview(self.actionButton)
-        self.addSubview(self.sendToArchiveButton)
-        self.addSubview(self.childViewContainer)
+//        self.addSubview(self.childViewContainer)
     }
     
     // MARK: - Style
     
     func style() {
         self.backgroundColor = .green
+        self.actionButton.alpha = 1.0
+        self.actionButton.setTitleColor(.black, for: .normal)
+        debugPrint("style")
     }
     
     // MARK: - Update
@@ -90,7 +82,11 @@ class RootView: UIView, ViewControllerModellableView {
     
     // MARK: - Layout
     
-    override func layoutSubviews() {}
+    override func layoutSubviews() {
+        self.actionButton.pin.left().right().marginTop(24).height(50)
+//        self.actionButton.bounds = CGRect(width: self.bounds.width, height: 200)
+        self.actionButton.setTitle("Welcome", for: .normal)
+    }
 }
 
 // MARK: - Styling
