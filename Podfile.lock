@@ -1,4 +1,9 @@
 PODS:
+  - Alamofire (4.9.1)
+  - AlamofireImage (3.6.0):
+    - Alamofire (~> 4.9)
+  - AlamofireNetworkActivityIndicator (2.4.0):
+    - Alamofire (~> 4.8)
   - HydraAsync (1.2.1)
   - Katana (3.1.0):
     - HydraAsync (~> 1.2)
@@ -7,23 +12,32 @@ PODS:
     - Katana (< 4, >= 3.0)
 
 DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
+  - AlamofireNetworkActivityIndicator
   - HydraAsync
   - PinLayout
   - Tempura
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - AlamofireImage
+    - AlamofireNetworkActivityIndicator
     - HydraAsync
     - Katana
     - PinLayout
     - Tempura
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
+  AlamofireNetworkActivityIndicator: 9acc3de3ca6645bf0efed462396b0df13dd3e7b8
   HydraAsync: 8f2ab62d57e140b4ca587ae0f66e1eb04e8e6965
   Katana: caa2adb661a386f9a993a15845841dc2c9b083aa
   PinLayout: e41a50260a76508b7a7fcee8955c76639adc69bc
   Tempura: d38c2d982864d9dbca6b11a519e8b00024d04abd
 
-PODFILE CHECKSUM: 0db16ffd8a9b632814a4ead4c9f158ca27f7b0db
+PODFILE CHECKSUM: 08b7bf522866a2abcd1a071eed7d9551197379cd
 
 COCOAPODS: 1.8.4

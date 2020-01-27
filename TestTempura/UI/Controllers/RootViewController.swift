@@ -23,10 +23,10 @@ class RootViewController: ViewControllerWithLocalState<RootView> {
     // listen for interactions from the view
     // dispatch actions or change the local state in response to user actions
     override func setupInteraction() {
-    self.rootView.didWizard = { [unowned self] in
+        self.rootView.didWizard = { [unowned self] in
 //      self.dispatch(ToggleItem(itemID: id))
-        self.dispatch(Show(Screen.welcome, animated: true))
-    }
+            self.dispatch(Show(Screen.login, animated: true))
+        }
 //    self.rootView.didTapTodoSection = { [unowned self] in
 //      if self.localState.selectedSection != .todo {
 //        self.localState.selectedSection = .todo
@@ -62,20 +62,10 @@ extension RootViewController: RoutableWithConfiguration {
 
     var navigationConfiguration: [NavigationRequest: NavigationInstruction] {
         return [
-//        .show(Screen.root): .dismissModally(behaviour: .hard),
-            .show(Screen.welcome): .presentModally { [unowned self] _ in
-                let c = WelcomeViewController(store: self.store)
+            .show(Screen.login): .presentModally { [unowned self] _ in
+                let c = LoginViewController(store: self.store)
                 c.modalPresentationStyle = .overCurrentContext
                 return c
-//            if let editID = context as? String {
-//              let ai = AddItemViewController(store: self.store, itemIDToEdit: editID)
-//              ai.modalPresentationStyle = .overCurrentContext
-//              return ai
-//            } else {
-//              let ai = AddItemViewController(store: self.store)
-//              ai.modalPresentationStyle = .overCurrentContext
-//              return ai
-//            }
             },
         ]
     }

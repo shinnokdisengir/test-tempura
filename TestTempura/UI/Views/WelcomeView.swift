@@ -13,15 +13,15 @@ import UIKit
 // MARK: - View Model
 
 struct WelcomeViewModel: ViewModelWithLocalState, Equatable {
-    var auth: AuthModel
+    var session: SessionModel
     
     init?(state: AppState?, localState: WelcomeLocalState) {
         guard let state = state else { return nil }
-        self.auth = state.auth
+        self.session = state.session
     }
     
     static func == (l: WelcomeViewModel, r: WelcomeViewModel) -> Bool {
-        if l.auth != r.auth { return false }
+        if l.session != r.session { return false }
         return true
     }
 }

@@ -13,15 +13,15 @@ import UIKit
 // MARK: - View Model
 
 struct RootViewModel: ViewModelWithLocalState, Equatable {
-    var auth: AuthModel
+    var session: SessionModel
     
     init?(state: AppState?, localState: RootLocalState) {
         guard let state = state else { return nil }
-        self.auth = state.auth
+        self.session = state.session
     }
     
     static func == (l: RootViewModel, r: RootViewModel) -> Bool {
-        if l.auth != r.auth { return false }
+        if l.session != r.session { return false }
         return true
     }
 }
@@ -84,7 +84,6 @@ class RootView: UIView, ViewControllerModellableView {
     
     override func layoutSubviews() {
         self.actionButton.pin.left().right().marginTop(24).height(50)
-//        self.actionButton.bounds = CGRect(width: self.bounds.width, height: 200)
         self.actionButton.setTitle("Welcome", for: .normal)
     }
 }

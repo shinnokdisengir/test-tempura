@@ -10,9 +10,11 @@ import Foundation
 import Katana
 
 struct AppState: State {
-    var auth: AuthModel = AuthModel()
+    var session: SessionModel = SessionModel()
+    // TODO service.auth.login()
+    var service: ServiceModel = ServiceModel()
     
     var isLogged: Bool {
-        return !self.auth.isLogged
+        return !self.session.isLogged
     }
 }

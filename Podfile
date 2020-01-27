@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'TestTempura' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -9,6 +9,9 @@ target 'TestTempura' do
   pod 'Tempura'
   pod 'HydraAsync'
   pod 'PinLayout'
+  pod 'Alamofire'
+  pod 'AlamofireImage'
+  pod 'AlamofireNetworkActivityIndicator'
 
   target 'TestTempuraTests' do
     inherit! :search_paths
