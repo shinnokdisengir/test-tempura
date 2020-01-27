@@ -41,7 +41,7 @@ public enum URLs: String {
 
 
 // TODO: Da cambiare
-let currentUrl = "\(Schema.dev.rawValue)\(URLs.dev.rawValue)"
+let currentUrl = "\(Schema.prod.rawValue)\(URLs.prod.rawValue)"
 
 public enum Api: String {
     case register = "/register"

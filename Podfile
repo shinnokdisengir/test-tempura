@@ -12,6 +12,7 @@ target 'TestTempura' do
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'AlamofireNetworkActivityIndicator'
+  pod 'SwiftyJSON'
 
   target 'TestTempuraTests' do
     inherit! :search_paths
