@@ -20,8 +20,14 @@ struct AuthLogin: StateUpdater {
             currentState.session.username = username
             currentState.session.authentication = response
             currentState.session.logged = true
+        } catch ServiceError.invalidAuthentication  {
+            debugPrint("invalidAuthentication")
+            currentState.session.logged = false
+        } catch ServiceError.generic(let code, let message) {
+            debugPrint(code, message)
+            currentState.session.logged = false
         } catch {
-            debugPrint("error")
+            debugPrint("BOH error")
             currentState.session.logged = false
         }
     }

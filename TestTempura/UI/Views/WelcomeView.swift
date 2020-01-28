@@ -36,7 +36,9 @@ extension WelcomeView {
 }
 
 class WelcomeView: UIView, ViewControllerModellableView {
+    
     // MARK: - Subviews
+    
     var scrollView: UIScrollView = UIScrollView()
     var titleLabel: UIView = UIView()
     var actionButton: UIButton = UIButton(type: .custom)
@@ -53,7 +55,7 @@ class WelcomeView: UIView, ViewControllerModellableView {
         self.scrollView.isScrollEnabled = false
         
         self.actionButton.on(.touchUpInside) { [unowned self] _ in
-            guard let model = self.model else { return }
+            guard let _ = self.model else { return }
         }
         
         self.scrollView.addSubview(self.titleLabel)
@@ -70,7 +72,7 @@ class WelcomeView: UIView, ViewControllerModellableView {
     // MARK: - Update
     
     func update(oldModel: WelcomeViewModel?) {
-        guard let model = self.model, oldModel != self.model else { return }
+        guard let _ = self.model, oldModel != self.model else { return }
     }
     
     // MARK: - Layout

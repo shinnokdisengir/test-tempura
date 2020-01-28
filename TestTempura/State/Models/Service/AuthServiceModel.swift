@@ -27,7 +27,7 @@ struct AuthServiceModel {
 
                 request(ServiceModel.getURI(withApi: .login), method: .post, parameters: params)
                     .validate(contentType: ["application/json"])
-                    .validate(statusCode: 200..<400)
+                    .validate(statusCode: 200..<300)
                     .responseJSON(
                         completionHandler: { response in
                             switch response.result {
@@ -40,9 +40,16 @@ struct AuthServiceModel {
                                             refreshToken: data["refresh_token"].stringValue,
                                             tokenType: data["token_type"].stringValue))
 
-                                case .failure:
-                                    debugPrint(response.error as Any)
-                                    reject(response.error!)
+                                case let .failure(error):
+                                    if let responseData = response.data {
+                                        let parsedResponseData = try! JSON(data: responseData)
+                                        let serviceError: ServiceError = response.response != nil && response.response!.statusCode == 400 ?
+                                            ServiceError.invalidAuthentication :
+                                            ServiceError.generic(500, parsedResponseData["error_description"].stringValue)
+                                        reject(serviceError)
+                                    } else {
+                                        reject(error)
+                                    }
                             }
             })
         })

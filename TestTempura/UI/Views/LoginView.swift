@@ -38,11 +38,14 @@ extension LoginView {
 }
 
 class LoginView: UIView, ViewControllerModellableView {
+    
     // MARK: - Subviews
+    
     var titleLabel: UILabel = UILabel()
     var actionButton: UIButton = UIButton(type: .custom)
     
     // MARK: - Interactions
+    
     var didTapLogin: CustomInteraction<(String, String)>?
     var didLoggedIn: Interaction?
     

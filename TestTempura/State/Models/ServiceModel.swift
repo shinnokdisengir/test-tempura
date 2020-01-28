@@ -20,10 +20,6 @@ public enum URLs: String {
     case prod = "api.feezup.com"
 }
 
-
-// TODO: Da cambiare
-let currentUrl = "\(Schema.prod.rawValue)\(URLs.prod.rawValue)"
-
 public enum Api: String {
     case register = "/register"
     case login = "/oauth/v2/token"
@@ -41,10 +37,23 @@ public enum Api: String {
     case offersPreferred = "/like/offers"
 }
 
+enum ServiceError: Error {
+    case invalidAuthentication
+    case tokenExpired
+    case forbidden
+    case generic(Int, String?)
+}
+
 
 struct ServiceModel {
     static func getURI(withApi api: Api) -> URLConvertible {
-        return URL(string: currentUrl + api.rawValue)!
+        var url = "\(Schema.prod.rawValue)\(URLs.prod.rawValue)"
+        let env = ProcessInfo.processInfo.environment["ENV"]
+        if (env != nil && env! == "debug") {
+           url = "\(Schema.dev.rawValue)\(URLs.dev.rawValue)"
+        }
+        debugPrint("API-URL: ", url)
+        return URL(string: url + api.rawValue)!
     }
     
     var auth: AuthServiceModel = AuthServiceModel()

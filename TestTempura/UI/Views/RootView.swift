@@ -36,6 +36,7 @@ extension RootView {
 }
 
 class RootView: UIView, ViewControllerModellableView {
+    
     // MARK: - Subviews
     
     var actionButton: UIButton = UIButton(type: .custom)
@@ -62,7 +63,6 @@ class RootView: UIView, ViewControllerModellableView {
             self.didWizard?()
         }
         
-//        self.addSubview(self.scrollView)
         self.addSubview(self.actionButton)
         self.addSubview(self.username)
     }
@@ -79,8 +79,6 @@ class RootView: UIView, ViewControllerModellableView {
     
     func update(oldModel: RootViewModel?) {
         guard let model = self.model, oldModel != self.model else { return }
-//        if (model.session.authentication != nil)
-        debugPrint(model.session.authentication?.accessToken)
         self.username.text = model.session.authentication?.accessToken
     }
     

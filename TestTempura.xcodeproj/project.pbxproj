@@ -238,9 +238,9 @@
 		1AE416E123DEDC89001CFFAC /* TestTempura */ = {
 			isa = PBXGroup;
 			children = (
+				1A1E8D7B23DEFCBD00360EFE /* Navigation */,
 				1A1E8D8123DF047100360EFE /* UI */,
 				1A1E8D7823DEF78D00360EFE /* Dependencies */,
-				1A1E8D7B23DEFCBD00360EFE /* Navigation */,
 				1A1E8D7223DEF1BC00360EFE /* State */,
 				1A1E8D8623DF11A100360EFE /* Utilities */,
 				1AE416E223DEDC89001CFFAC /* AppDelegate.swift */,
