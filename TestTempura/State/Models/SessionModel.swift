@@ -11,7 +11,7 @@ import UIKit
 
 struct SessionModel: Equatable {
     var username: String?
-    var accessToken: String?
+    var authentication: Authentication?
     var logged: Bool = false
 
     var isLogged: Bool {

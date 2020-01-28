@@ -11,44 +11,6 @@ import Foundation
 import Hydra
 import SwiftyJSON
 
-struct Authentication {
-    let accessToken: String
-    let expiresIn: Int
-    let refreshToken: String
-    let tokenType: String
-}
-
-// public func login(withUsername username: String?,
-//                   andPassword password: String?,
-//               andCompletion completion: @escaping (FEZError?) -> ()) {
-//
-//    let urlString = Constants.apiURL(withApi: Api.login.rawValue)
-//
-//    guard let url = URL(string: urlString) else {
-//        completion(FEZError())
-//        return
-//    }
-//
-//    let params = oauthParams(withUsername: username, andPassword: password)
-//
-//    Alamofire.request(url, method: .post, parameters: params, headers: nil)
-//        .validate(statusCode: 200..<400)
-//        .responseDecodableObject(queue: .main, keyPath: nil, decoder: defaultDecoder) { (response: DataResponse<OauthResponse>) in
-//
-//            switch response.result {
-//            case .success:
-//                let credential = URLCredential(user: username ?? "", password: password ?? "", persistence: .permanent)
-//                SessionService.sharedInstance.saveCredentials(credentials: credential)
-//                SessionService.sharedInstance.saveOauth(oauthData: response.value)
-//                NotificationService.sharedInstance.addSubscriptionObserver()
-//
-//                completion(nil)
-//            case .failure(_):
-//                completion(self.fezError(withResponse: response))
-//            }
-//    }
-// }
-
 struct AuthServiceModel {
     public func login(withUsername username: String, andPassword password: String) -> Promise<Authentication> {
         return Promise<Authentication>(

@@ -44,6 +44,8 @@ class RootView: UIView, ViewControllerModellableView {
     // the view of the child view controller
     var childViewContainer: ContainerView = ContainerView()
     
+    var username: UILabel = UILabel()
+    
     // MARK: - Interactions
     
     var didWizard: Interaction?
@@ -62,7 +64,7 @@ class RootView: UIView, ViewControllerModellableView {
         
 //        self.addSubview(self.scrollView)
         self.addSubview(self.actionButton)
-//        self.addSubview(self.childViewContainer)
+        self.addSubview(self.username)
     }
     
     // MARK: - Style
@@ -71,13 +73,15 @@ class RootView: UIView, ViewControllerModellableView {
         self.backgroundColor = .green
         self.actionButton.alpha = 1.0
         self.actionButton.setTitleColor(.black, for: .normal)
-        debugPrint("style")
     }
     
     // MARK: - Update
     
     func update(oldModel: RootViewModel?) {
         guard let model = self.model, oldModel != self.model else { return }
+//        if (model.session.authentication != nil)
+        debugPrint(model.session.authentication?.accessToken)
+        self.username.text = model.session.authentication?.accessToken
     }
     
     // MARK: - Layout
@@ -85,6 +89,9 @@ class RootView: UIView, ViewControllerModellableView {
     override func layoutSubviews() {
         self.actionButton.pin.left().right().marginTop(24).height(50)
         self.actionButton.setTitle("Welcome", for: .normal)
+        self.username.pin.bottom().left().right().height(50)
+        self.username.text = "egrger"
+        
     }
 }
 

@@ -38,6 +38,9 @@ class LoginViewController: ViewControllerWithLocalState<LoginView> {
         self.rootView.didTapLogin = { [unowned self] auth in
             self.dispatch(AuthLogin(username: auth.0, password: auth.1))
         }
+        self.rootView.didLoggedIn = { [unowned self] in
+            self.dispatch(Hide(animated: true, context: nil, atomic: true))
+        }
     }
 }
 
@@ -45,12 +48,12 @@ class LoginViewController: ViewControllerWithLocalState<LoginView> {
 
 extension LoginViewController: RoutableWithConfiguration {
     var routeIdentifier: RouteElementIdentifier {
-        return Screen.welcome.rawValue
+        return Screen.login.rawValue
     }
 
     var navigationConfiguration: [NavigationRequest: NavigationInstruction] {
         return [
-            .hide(Screen.welcome): .dismissModally(behaviour: .hard),
+            .hide(Screen.login): .dismissModally(behaviour: .hard),
         ]
     }
 }

@@ -14,7 +14,4 @@ struct AppState: State {
     // TODO service.auth.login()
     var service: ServiceModel = ServiceModel()
     
-    var isLogged: Bool {
-        return !self.session.isLogged
-    }
 }

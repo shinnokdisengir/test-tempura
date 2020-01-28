@@ -44,7 +44,7 @@ class LoginView: UIView, ViewControllerModellableView {
     
     // MARK: - Interactions
     var didTapLogin: CustomInteraction<(String, String)>?
-    
+    var didLoggedIn: Interaction?
     
     // MARK: - Setup
     
@@ -72,6 +72,7 @@ class LoginView: UIView, ViewControllerModellableView {
     
     func update(oldModel: LoginViewModel?) {
         guard let model = self.model, oldModel != self.model else { return }
+        if (model.session.isLogged) { self.didLoggedIn?() }
     }
     
     // MARK: - Layout

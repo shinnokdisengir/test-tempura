@@ -15,19 +15,14 @@ struct AuthLogin: StateUpdater {
 
     func updateState(_ currentState: inout AppState) {
         do {
+            // TODO: - Aggiungere lo spinner di caricamento
             let response = try await(currentState.service.auth.login(withUsername: self.username, andPassword: self.password))
-            debugPrint(response)
+            currentState.session.username = username
+            currentState.session.authentication = response
+            currentState.session.logged = true
         } catch {
-            debugPrint("errore")
+            debugPrint("error")
+            currentState.session.logged = false
         }
     }
 }
-
-//struct AuthLoggedIn: StateUpdater {
-//    var token: String
-//
-//    func updateState(_ currentState: inout AppState) {
-//        currentState.auth.accessToken = self.token
-//        currentState.auth.logged = true
-//    }
-//}
