@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Hydra
+import Katana
 import Tempura
 
 // MARK: - Local State
@@ -23,8 +25,9 @@ class RootViewController: ViewControllerWithLocalState<RootView> {
     // listen for interactions from the view
     // dispatch actions or change the local state in response to user actions
     override func setupInteraction() {
-        self.rootView.didWizard = { [unowned self] in
-//      self.dispatch(ToggleItem(itemID: id))
+        self.rootView.didLoginTap = { [unowned self] in
+            // Already logged
+            guard !self.store.state.session.isLogged else { return }
             self.dispatch(Show(Screen.login, animated: true))
         }
 //    self.rootView.didTapTodoSection = { [unowned self] in

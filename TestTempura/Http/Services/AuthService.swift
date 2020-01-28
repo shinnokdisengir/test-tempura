@@ -11,12 +11,8 @@ import Foundation
 import Hydra
 import SwiftyJSON
 
-// struct Test: AFError {
-//
-// }
-
-struct AuthServiceModel {
-    public func login(withUsername username: String, andPassword password: String) -> Promise<Authentication> {
+extension Http {
+    public static func login(withUsername username: String, andPassword password: String) -> Promise<Authentication> {
         return Promise<Authentication>(
             in: .background,
             { resolve, reject, _ in
@@ -29,15 +25,15 @@ struct AuthServiceModel {
                     "client_secret": "5yb6t1008m4gwwg8c80co0gcsg0k400ssockwwo0kc0c4ow8c"
                 ]
 
-                AF.request(ServiceModel.getURI(withApi: .login), method: .post, parameters: params)
+                AF.request(Http.getURI(withApi: .login), method: .post, parameters: params)
                     .validate(contentType: ["application/json"])
                     .validate(statusCode: 200..<300)
                     .responseDecodable { (response: DataResponse<OAuth, AFError>) in
                         guard response.value != nil else {
                             debugPrint("🥶 Error on login: \(String(describing: response.error))")
-                            let serviceError: ServiceError = response.response != nil && response.response!.statusCode == 400 ?
-                                ServiceError.invalidAuthentication :
-                                ServiceError.generic(500, String(describing: response.error))
+                            let serviceError: HttpError = response.response != nil && response.response!.statusCode == 400 ?
+                                HttpError.invalidAuthentication :
+                                HttpError.generic(500, String(describing: response.error))
                             return reject(serviceError)
                         }
                         debugPrint("👍 Login success")

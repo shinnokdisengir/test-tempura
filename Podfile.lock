@@ -19,7 +19,7 @@ DEPENDENCIES:
   - HydraAsync
   - PinLayout
   - SwiftyJSON
-  - Tempura
+  - Tempura (~> 4.0)
 
 SPEC REPOS:
   trunk:
@@ -42,6 +42,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   Tempura: d38c2d982864d9dbca6b11a519e8b00024d04abd
 
-PODFILE CHECKSUM: 7ec59f23b1d40e8b67b27805676bef054df43e33
+PODFILE CHECKSUM: 68eeb910d55497efab7b6ed682559e7003d6bb73
 
 COCOAPODS: 1.8.4

@@ -14,12 +14,10 @@ import UIKit
 
 struct LoginViewModel: ViewModelWithLocalState, Equatable {
     var session: SessionModel
-    var service: ServiceModel
     
     init?(state: AppState?, localState: LoginLocalState) {
         guard let state = state else { return nil }
         self.session = state.session
-        self.service = state.service
     }
     
     static func == (l: LoginViewModel, r: LoginViewModel) -> Bool {

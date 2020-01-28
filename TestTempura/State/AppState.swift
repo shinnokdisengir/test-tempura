@@ -10,8 +10,6 @@ import Foundation
 import Katana
 
 struct AppState: State {
+    var ui: UIModel = UIModel()
     var session: SessionModel = SessionModel()
-    // TODO service.auth.login()
-    var service: ServiceModel = ServiceModel()
-    
 }

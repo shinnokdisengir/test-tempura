@@ -9,27 +9,40 @@
 import Katana
 import Hydra
 
-struct UserMe: StateUpdater {
-    var username: String
-    var password: String
+//public func oauthHeader() ->HTTPHeaders {
+//    var headers: HTTPHeaders = [:]
+//    let oauth = SessionService.sharedInstance.currentOauth()
+//    if let token = oauth?.access_token {
+//        headers["Authorization"] = "Bearer \(token)"
+//    }
+//    //        guard let data = oauth?.access_token?.data(using: .utf8) else { return headers}
+//
+//    //        let token = data.base64EncodedString(options: [])
+//
+//    return headers
+//}
 
+
+struct UserMe: StateUpdater {
+    
     func updateState(_ currentState: inout AppState) {
-        do {
-            // TODO: - Aggiungere lo spinner di caricamento
-            let response = try await(currentState.service.auth.login(withUsername: self.username, andPassword: self.password))
-            currentState.session.username = username
-            currentState.session.authentication = response
-            currentState.session.logged = true
-        } catch ServiceError.invalidAuthentication  {
-            debugPrint("invalidAuthentication")
-            currentState.session.logged = false
-        } catch ServiceError.generic(let code, let message) {
-            debugPrint(code, message as Any)
-            currentState.session.logged = false
-        } catch {
-            debugPrint("BOH error")
-            currentState.session.logged = false
-        }
+        
+//        do {
+//            // TODO: - Aggiungere lo spinner di caricamento
+//            let response = try await(currentState.service.auth.login(withUsername: self.username, andPassword: self.password))
+//            currentState.session.username = username
+//            currentState.session.authentication = response
+//            currentState.session.logged = true
+//        } catch ServiceError.invalidAuthentication  {
+//            debugPrint("invalidAuthentication")
+//            currentState.session.logged = false
+//        } catch ServiceError.generic(let code, let message) {
+//            debugPrint(code, message as Any)
+//            currentState.session.logged = false
+//        } catch {
+//            debugPrint("BOH error")
+//            currentState.session.logged = false
+//        }
     }
 }
 

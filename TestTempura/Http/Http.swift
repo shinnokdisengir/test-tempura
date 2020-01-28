@@ -37,7 +37,7 @@ public enum Api: String {
     case offersPreferred = "/like/offers"
 }
 
-enum ServiceError: Error {
+enum HttpError: Error {
     case invalidAuthentication
     case tokenExpired
     case forbidden
@@ -45,7 +45,7 @@ enum ServiceError: Error {
 }
 
 
-struct ServiceModel {
+struct Http {
     static func getURI(withApi api: Api) -> URLConvertible {
         var url = "\(Schema.prod.rawValue)\(URLs.prod.rawValue)"
         let env = ProcessInfo.processInfo.environment["ENV"]
@@ -55,8 +55,5 @@ struct ServiceModel {
         debugPrint("API-URL: ", url)
         return URL(string: url + api.rawValue)!
     }
-    
-    var auth: AuthServiceModel = AuthServiceModel()
-
 }
 

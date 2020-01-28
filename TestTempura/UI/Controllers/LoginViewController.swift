@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Hydra
 import Katana
 import Tempura
 
@@ -36,7 +37,26 @@ class LoginViewController: ViewControllerWithLocalState<LoginView> {
 
     override func setupInteraction() {
         self.rootView.didTapLogin = { [unowned self] auth in
-            self.dispatch(AuthLogin(username: auth.0, password: auth.1))
+            // Login procedure
+            async(in: .background) {
+                // Loading
+                self.dispatch(SetLoading(loading: true))
+                do {
+                    let authentication = try await(Http.login(withUsername: auth.0, andPassword: auth.1))
+                    self.dispatch(SaveSession(username: auth.0, authentication: authentication))
+                } catch HttpError.invalidAuthentication {
+                    debugPrint("invalidAuthentication")
+//                    currentState.session.logged = false
+                } catch let HttpError.generic(code, message) {
+                    debugPrint(code, message as Any)
+//                    currentState.session.logged = false
+                } catch {
+                    debugPrint("BOH error")
+//                    currentState.session.logged = false
+                }
+                // Stop loading
+                self.dispatch(SetLoading(loading: false))
+            }
         }
         self.rootView.didLoggedIn = { [unowned self] in
             self.dispatch(Hide(animated: true, context: nil, atomic: true))
