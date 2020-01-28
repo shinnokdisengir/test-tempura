@@ -1,15 +1,15 @@
 //
-//  AuthActions.swift
+//  UserActions.swift
 //  TestTempura
 //
-//  Created by Gabriele Ghio on 27/01/2020.
+//  Created by Gabriele Ghio on 28/01/2020.
 //  Copyright © 2020 Occhidelfato. All rights reserved.
 //
 
 import Katana
 import Hydra
 
-struct AuthLogin: StateUpdater {
+struct UserMe: StateUpdater {
     var username: String
     var password: String
 
@@ -32,3 +32,26 @@ struct AuthLogin: StateUpdater {
         }
     }
 }
+
+//
+//public func getUser(completion: @escaping (FEZError?, User?) -> ()) {
+//
+//    let urlString = Constants.apiURL(withApi: Api.me.rawValue)
+//
+//    guard let url = URL(string: urlString) else {
+//        completion(FEZError(), nil)
+//        return
+//    }
+//
+//    Alamofire.request(url, method: .get, parameters: nil, headers: self.oauthHeader())
+//        .validate(statusCode: 200..<400)
+//        .responseDecodableObject(queue: .main, keyPath: "user", decoder: defaultDecoder) { (response: DataResponse<User>) in
+//
+//            switch response.result {
+//            case .success:
+//                completion(nil, response.value)
+//            case .failure(_):
+//                completion(self.fezError(withResponse: response), nil)
+//            }
+//    }
+//}

@@ -1,9 +1,9 @@
 PODS:
-  - Alamofire (4.9.1)
-  - AlamofireImage (3.6.0):
-    - Alamofire (~> 4.9)
-  - AlamofireNetworkActivityIndicator (2.4.0):
-    - Alamofire (~> 4.8)
+  - Alamofire (5.0.0-rc.3)
+  - AlamofireImage (4.0.0-beta.6):
+    - Alamofire (~> 5.0.0-rc.3)
+  - AlamofireNetworkActivityIndicator (3.0.0-beta.3):
+    - Alamofire (~> 5.0.0-beta.6)
   - HydraAsync (1.2.1)
   - Katana (3.1.0):
     - HydraAsync (~> 1.2)
@@ -13,9 +13,9 @@ PODS:
     - Katana (< 4, >= 3.0)
 
 DEPENDENCIES:
-  - Alamofire
-  - AlamofireImage
-  - AlamofireNetworkActivityIndicator
+  - Alamofire (~> 5.0.0-rc.3)
+  - AlamofireImage (~> 4.0.0-beta.6)
+  - AlamofireNetworkActivityIndicator (~> 3.0.0-beta.3)
   - HydraAsync
   - PinLayout
   - SwiftyJSON
@@ -33,15 +33,15 @@ SPEC REPOS:
     - Tempura
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
-  AlamofireNetworkActivityIndicator: 9acc3de3ca6645bf0efed462396b0df13dd3e7b8
+  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  AlamofireImage: edf3216fd178a89d63e681e609909d7ac98fa3c6
+  AlamofireNetworkActivityIndicator: 592c612ef9bb2e9f55f00ad99f72b2222f0bf33f
   HydraAsync: 8f2ab62d57e140b4ca587ae0f66e1eb04e8e6965
   Katana: caa2adb661a386f9a993a15845841dc2c9b083aa
   PinLayout: e41a50260a76508b7a7fcee8955c76639adc69bc
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   Tempura: d38c2d982864d9dbca6b11a519e8b00024d04abd
 
-PODFILE CHECKSUM: 14da7641bcf2bce33b70f93ba8d2629d48f8eb95
+PODFILE CHECKSUM: 7ec59f23b1d40e8b67b27805676bef054df43e33
 
 COCOAPODS: 1.8.4
