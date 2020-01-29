@@ -36,7 +36,11 @@ class SplashViewController: ViewControllerWithLocalState<SplashView> {
     
     override func setup() {}
 
-    override func setupInteraction() {}
+    override func setupInteraction() {
+        self.rootView.didEndSplash = { [unowned self] in
+            self.dispatch(Hide(Screen.splash, animated: false))
+        }
+    }
 }
 
 // MARK: - Routing

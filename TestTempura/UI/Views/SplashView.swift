@@ -8,6 +8,7 @@
 
 import UIKit
 import PinLayout
+import Hydra
 import Tempura
 
 struct SplashViewModel: ViewModelWithLocalState {
@@ -29,10 +30,15 @@ class SplashView: UIView, ViewControllerModellableView {
     var textImage: UIImageView = UIImageView(image: UIImage(named: "logo-text"))
     
     // MARK: - Interactions
+    var didEndSplash: Interaction?
     
     // MARK: - Setup
     
     func setup() {
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [unowned self] _ in
+            self.didEndSplash?()
+        }
         self.addSubview(self.catImage)
     }
     
@@ -52,7 +58,11 @@ class SplashView: UIView, ViewControllerModellableView {
     // MARK: - Layout
     
     override func layoutSubviews() {
-        self.catImage.pin.hCenter().top(pin.safeArea).bottom(pin.safeArea).width(200)
+        self.catImage.pin
+            .hCenter()
+            .top(pin.safeArea)
+            .bottom(pin.safeArea)
+            .width(200)
     }
 }
 
