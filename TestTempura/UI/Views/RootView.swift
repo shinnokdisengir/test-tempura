@@ -99,6 +99,7 @@ class RootView: UIView, ViewControllerModellableView {
     // MARK: - Layout
     
     override func layoutSubviews() {
+        
         self.actionButton.pin.left().right().marginTop(24).height(50)
         self.actionButton.setTitle("Login", for: .normal)
         self.registerButton.pin

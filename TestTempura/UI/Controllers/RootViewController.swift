@@ -20,6 +20,9 @@ struct RootLocalState: LocalState {
 class RootViewController: ViewControllerWithLocalState<RootView> {
     override func setup() {
 //    self.add(self.childViewController, in: self.rootView.childViewContainer)
+        if (!self.store.state.session.isLogged) {
+            self.dispatch(Show(Screen.splash, animated: false))
+        }
     }
 
     // listen for interactions from the view
@@ -85,6 +88,11 @@ extension RootViewController: RoutableWithConfiguration {
 
     var navigationConfiguration: [NavigationRequest: NavigationInstruction] {
         return [
+            .show(Screen.splash): .presentModally { [unowned self] _ in
+                let c = SplashViewController(store: self.store)
+                c.modalPresentationStyle = .fullScreen
+                return c
+            },
             .show(Screen.login): .presentModally { [unowned self] _ in
                 let c = LoginViewController(store: self.store)
                 c.modalPresentationStyle = .overCurrentContext

@@ -12,6 +12,7 @@ import Foundation
 
 enum Screen: String {
     case root
+    case splash
     case home
     case login
     case welcome
