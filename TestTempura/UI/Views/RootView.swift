@@ -39,7 +39,6 @@ extension RootView {
 }
 
 class RootView: UIView, ViewControllerModellableView {
-    
     // MARK: - Subviews
     
     var actionButton: UIButton = UIButton(type: .custom)
@@ -48,12 +47,14 @@ class RootView: UIView, ViewControllerModellableView {
     // the view of the child view controller
     var childViewContainer: ContainerView = ContainerView()
     var loadingView: UIActivityIndicatorView = UIActivityIndicatorView()
+    var registerButton: UIButton = UIButton(type: .custom)
     
     var username: UILabel = UILabel()
     
     // MARK: - Interactions
     
     var didLoginTap: Interaction?
+    var didRegistrationTap: CustomInteraction<(String, String)>?
     
     // MARK: - Setup
     
@@ -67,7 +68,12 @@ class RootView: UIView, ViewControllerModellableView {
             self.didLoginTap?()
         }
         
+        self.registerButton.on(.touchUpInside) { [unowned self] _ in
+            self.didRegistrationTap?(("shinnok@email.it", "feezupfeezup"))
+        }
+        
         self.addSubview(self.actionButton)
+        self.addSubview(self.registerButton)
         self.addSubview(self.username)
         self.addSubview(self.loadingView)
     }
@@ -78,6 +84,8 @@ class RootView: UIView, ViewControllerModellableView {
         self.backgroundColor = .green
         self.actionButton.alpha = 1.0
         self.actionButton.setTitleColor(.black, for: .normal)
+        self.registerButton.alpha = 1.0
+        self.registerButton.setTitleColor(.red, for: .normal)
     }
     
     // MARK: - Update
@@ -92,11 +100,20 @@ class RootView: UIView, ViewControllerModellableView {
     
     override func layoutSubviews() {
         self.actionButton.pin.left().right().marginTop(24).height(50)
-        self.actionButton.setTitle("Welcome", for: .normal)
-        self.username.pin.bottom().left().right().height(50)
+        self.actionButton.setTitle("Login", for: .normal)
+        self.registerButton.pin
+            .left()
+            .right()
+            .below(of: self.actionButton)
+            .height(50)
+        self.registerButton.setTitle("Register", for: .normal)
+        self.username.pin
+            .bottom()
+            .left()
+            .right()
+            .height(50)
         self.username.text = "egrger"
-        self.loadingView.pin.center().height(0)
-        
+        self.loadingView.pin.center().size(50)
     }
 }
 

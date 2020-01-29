@@ -44,11 +44,11 @@ class LoginViewController: ViewControllerWithLocalState<LoginView> {
                 do {
                     let authentication = try await(Http.login(withUsername: auth.0, andPassword: auth.1))
                     self.dispatch(SaveSession(username: auth.0, authentication: authentication))
-                } catch HttpError.invalidAuthentication {
+                } catch LoginError.invalidAuthentication {
                     debugPrint("invalidAuthentication")
 //                    currentState.session.logged = false
-                } catch let HttpError.generic(code, message) {
-                    debugPrint(code, message as Any)
+                } catch LoginError.generic {
+                    debugPrint("generic error")
 //                    currentState.session.logged = false
                 } catch {
                     debugPrint("BOH error")

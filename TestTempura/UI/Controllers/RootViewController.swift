@@ -30,6 +30,26 @@ class RootViewController: ViewControllerWithLocalState<RootView> {
             guard !self.store.state.session.isLogged else { return }
             self.dispatch(Show(Screen.login, animated: true))
         }
+        self.rootView.didRegistrationTap = { [unowned self] registration in
+//            guard !self.store.state.session.isLogged else { return }
+            async(in: .background) {
+                self.dispatch(SetLoading(loading: true))
+                do {
+                    let result = try await(Http.register(withEmail: registration.0, andPassword: registration.1))
+                    debugPrint(result)
+                    let authentication = try await(Http.login(withUsername: registration.0, andPassword: registration.1))
+                    debugPrint(authentication)
+                    self.dispatch(SaveSession(username: registration.0, authentication: authentication))
+                } catch RegistrationError.alreadyRegistered {
+                    debugPrint("aready registered")
+                } catch RegistrationError.passwordShort {
+                    debugPrint("Password too short")
+                } catch {
+                    debugPrint("generic error")
+                }
+                self.dispatch(SetLoading(loading: false))
+            }
+        }
 //    self.rootView.didTapTodoSection = { [unowned self] in
 //      if self.localState.selectedSection != .todo {
 //        self.localState.selectedSection = .todo

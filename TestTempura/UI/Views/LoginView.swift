@@ -55,7 +55,7 @@ class LoginView: UIView, ViewControllerModellableView {
         
         self.actionButton.on(.touchUpInside) { [unowned self] _ in
             guard let model = self.model else { return }
-            self.didTapLogin?(("admin@feezup.com", "vespachiavarivespa"))
+            self.didTapLogin?(("shinnok@email.it", "feezupfeezup"))
         }
         
         self.addSubview(self.titleLabel)

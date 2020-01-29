@@ -6,9 +6,9 @@
 //  Copyright © 2020 Occhidelfato. All rights reserved.
 //
 
+import Alamofire
 import Foundation
 import UIKit
-import Alamofire
 
 public enum Schema: String {
     case dev = "http://"
@@ -37,23 +37,23 @@ public enum Api: String {
     case offersPreferred = "/like/offers"
 }
 
-enum HttpError: Error {
-    case invalidAuthentication
-    case tokenExpired
-    case forbidden
-    case generic(Int, String?)
-}
+/// / Generic response from http services
+struct HttpResponse: Codable {
+    var success: Bool?
 
+    enum CodingKeys: String, CodingKey {
+        case success
+    }
+}
 
 struct Http {
     static func getURI(withApi api: Api) -> URLConvertible {
         var url = "\(Schema.prod.rawValue)\(URLs.prod.rawValue)"
         let env = ProcessInfo.processInfo.environment["ENV"]
-        if (env != nil && env! == "debug") {
-           url = "\(Schema.dev.rawValue)\(URLs.dev.rawValue)"
+        if env != nil, env! == "debug" {
+            url = "\(Schema.dev.rawValue)\(URLs.dev.rawValue)"
         }
         debugPrint("API-URL: ", url)
         return URL(string: url + api.rawValue)!
     }
 }
-
