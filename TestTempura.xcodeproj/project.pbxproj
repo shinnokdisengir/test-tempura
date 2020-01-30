@@ -33,7 +33,6 @@
 		1AC2A91423E2FD2800AC426D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC2A91323E2FD2800AC426D /* HomeView.swift */; };
 		1AC2A91623E31D4B00AC426D /* WizardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC2A91523E31D4B00AC426D /* WizardWelcomeViewController.swift */; };
 		1AC2A91823E31D6000AC426D /* WizardWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC2A91723E31D6000AC426D /* WizardWelcomeView.swift */; };
-		1AC2A91A23E33CA800AC426D /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC2A91923E33CA800AC426D /* MainNavigationViewController.swift */; };
 		1AE416E323DEDC89001CFFAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE416E223DEDC89001CFFAC /* AppDelegate.swift */; };
 		1AE416EC23DEDC8C001CFFAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AE416EB23DEDC8C001CFFAC /* Assets.xcassets */; };
 		1AE416EF23DEDC8C001CFFAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AE416ED23DEDC8C001CFFAC /* LaunchScreen.storyboard */; };
@@ -88,7 +87,6 @@
 		1AC2A91323E2FD2800AC426D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1AC2A91523E31D4B00AC426D /* WizardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardWelcomeViewController.swift; sourceTree = "<group>"; };
 		1AC2A91723E31D6000AC426D /* WizardWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardWelcomeView.swift; sourceTree = "<group>"; };
-		1AC2A91923E33CA800AC426D /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
 		1AE416DF23DEDC89001CFFAC /* TestTempura.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTempura.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AE416E223DEDC89001CFFAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AE416EB23DEDC8C001CFFAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 				1A5645AC23E22F0700B14FA4 /* SplashViewController.swift */,
 				1AC2A91123E2FD1800AC426D /* HomeViewController.swift */,
 				1AC2A91523E31D4B00AC426D /* WizardWelcomeViewController.swift */,
-				1AC2A91923E33CA800AC426D /* MainNavigationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -603,7 +600,6 @@
 				1A1E8D7A23DEF7B400360EFE /* DependenciesContainer.swift in Sources */,
 				1A5645AF23E22F1400B14FA4 /* SplashView.swift in Sources */,
 				1AC2A91823E31D6000AC426D /* WizardWelcomeView.swift in Sources */,
-				1AC2A91A23E33CA800AC426D /* MainNavigationViewController.swift in Sources */,
 				1A750EF123DF703F005B117C /* AuthService.swift in Sources */,
 				1A1E8D8323DF048200360EFE /* RootViewController.swift in Sources */,
 				1A9F053C23E0A6A40066B9BB /* AuthProcedures.swift in Sources */,

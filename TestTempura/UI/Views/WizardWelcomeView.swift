@@ -30,8 +30,9 @@ class WizardWelcomeView: UIView, ViewControllerModellableView {
 
     // MARK: - Subviews
     
-    var containerView: UIView = UIView()
-    var logoTextView: UIImageView = UIImageView(image: UIImage(named: "logo-text"))
+    let safeView = UIView()
+    let containerView = UIView()
+    let logoTextView = UIImageView(image: UIImage(named: "logo-text"))
 
     // MARK: - Setup
     
@@ -40,7 +41,8 @@ class WizardWelcomeView: UIView, ViewControllerModellableView {
         self.logoTextView.hero.id = "logo-text"
         
         self.containerView.addSubview(self.logoTextView)
-        self.addSubview(self.containerView)
+        self.safeView.addSubview(self.containerView)
+        self.addSubview(self.safeView)
     }
     
     // MARK: - Style
@@ -49,6 +51,8 @@ class WizardWelcomeView: UIView, ViewControllerModellableView {
         self.backgroundColor = Palette.mainColor
         
         self.containerView.backgroundColor = Palette.backgroundColor
+//        self.containerView.layer
+        self.containerView.isOpaque = true
         
         self.logoTextView.contentMode = .scaleAspectFit
     }
@@ -60,13 +64,13 @@ class WizardWelcomeView: UIView, ViewControllerModellableView {
     // MARK: - Layout
     
     override func layoutSubviews() {
+        self.safeView.pin
+            .all(pin.safeArea)
         self.containerView.pin
-            .top(pin.safeArea)
-            .bottom(pin.safeArea)
-            .margin(20)
+            .all(16)
         self.logoTextView.pin
-            .horizontally(16)
+            .top(16)
             .hCenter()
-        
+            .height(24)
     }
 }
