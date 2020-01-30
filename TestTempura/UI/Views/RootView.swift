@@ -59,12 +59,11 @@ class RootView: UIView, ViewControllerModellableView {
     // MARK: - Setup
     
     func setup() {
-        debugPrint("Root view setup")
+        self.isHeroEnabled = true
         self.scrollView.isPagingEnabled = true
         self.scrollView.isScrollEnabled = false
         
         self.actionButton.on(.touchUpInside) { [unowned self] _ in
-//            guard let model = self.model else { return }
             self.didLoginTap?()
         }
         
@@ -76,6 +75,7 @@ class RootView: UIView, ViewControllerModellableView {
         self.addSubview(self.registerButton)
         self.addSubview(self.username)
         self.addSubview(self.loadingView)
+        self.addSubview(self.childViewContainer)
     }
     
     // MARK: - Style
@@ -115,6 +115,7 @@ class RootView: UIView, ViewControllerModellableView {
             .height(50)
         self.username.text = "egrger"
         self.loadingView.pin.center().size(50)
+        self.childViewContainer.pin.horizontally().vertically()
     }
 }
 

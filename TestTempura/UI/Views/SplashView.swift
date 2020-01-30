@@ -10,35 +10,29 @@ import UIKit
 import PinLayout
 import Hydra
 import Tempura
+import Hero
 
 struct SplashViewModel: ViewModelWithLocalState {
     init?(state: AppState?, localState: SplashLocalState) {
     }
 }
 
-// MARK: - List sections
-
-extension WelcomeView {
-}
-
 
 class SplashView: UIView, ViewControllerModellableView {
+    
     // MARK: - Subviews
     
     var catImage: UIImageView = UIImageView(image: UIImage(named: "logo-cat"))
     var catImageSleep: UIImageView = UIImageView(image: UIImage(named: "logo-cat-sleep"))
     var textImage: UIImageView = UIImageView(image: UIImage(named: "logo-text"))
     
-    // MARK: - Interactions
-    var didEndSplash: Interaction?
-    
     // MARK: - Setup
     
     func setup() {
         
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [unowned self] _ in
-            self.didEndSplash?()
-        }
+        self.catImage.hero.id = "logo-cat"
+        self.textImage.hero.id = "logo-text"
+        
         self.addSubview(self.catImage)
     }
     

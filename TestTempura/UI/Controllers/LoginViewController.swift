@@ -14,7 +14,6 @@ import Tempura
 // MARK: - Local State
 
 struct LoginLocalState: LocalState {
-    //  var selectedSection: RootView.Section = .todo
 }
 
 // MARK: - ViewController
@@ -44,6 +43,7 @@ class LoginViewController: ViewControllerWithLocalState<LoginView> {
                 do {
                     let authentication = try await(Http.login(withUsername: auth.0, andPassword: auth.1))
                     self.dispatch(SaveSession(username: auth.0, authentication: authentication))
+                    self.dispatch(WriteSession())
                 } catch LoginError.invalidAuthentication {
                     debugPrint("invalidAuthentication")
 //                    currentState.session.logged = false
@@ -68,12 +68,12 @@ class LoginViewController: ViewControllerWithLocalState<LoginView> {
 
 extension LoginViewController: RoutableWithConfiguration {
     var routeIdentifier: RouteElementIdentifier {
-        return Screen.login.rawValue
+        return Screen.registerLogin.rawValue
     }
 
     var navigationConfiguration: [NavigationRequest: NavigationInstruction] {
         return [
-            .hide(Screen.login): .dismissModally(behaviour: .hard),
+            .hide(Screen.registerLogin): .dismissModally(behaviour: .hard),
         ]
     }
 }

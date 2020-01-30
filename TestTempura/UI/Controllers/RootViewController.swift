@@ -7,22 +7,35 @@
 //
 
 import Foundation
+import Hero
 import Hydra
 import Katana
 import Tempura
 
 // MARK: - Local State
 
-struct RootLocalState: LocalState {
-    //  var selectedSection: RootView.Section = .todo
-}
+struct RootLocalState: LocalState {}
 
 class RootViewController: ViewControllerWithLocalState<RootView> {
+    
+    var splashViewController: SplashViewController!
+    
     override func setup() {
-//    self.add(self.childViewController, in: self.rootView.childViewContainer)
-        if (!self.store.state.session.isLogged) {
-            self.dispatch(Show(Screen.splash, animated: false))
-        }
+
+        self.splashViewController = SplashViewController(store: self.store)
+        self.add(self.splashViewController, in: self.rootView.childViewContainer)
+        
+        self.isHeroEnabled = true
+        
+//        self.dispatch(Show(Screen.splash, animated: false))
+        
+//        async(in: .background) {
+//            try? await(self.dispatch(ReadSession()))
+//            if !self.store.state.session.isWizardCompleted {
+//                self.dispatch(Show(Screen.wizardWelcome, animated: true))
+//                return
+//            }
+//        }
     }
 
     // listen for interactions from the view
@@ -31,7 +44,7 @@ class RootViewController: ViewControllerWithLocalState<RootView> {
         self.rootView.didLoginTap = { [unowned self] in
             // Already logged
             guard !self.store.state.session.isLogged else { return }
-            self.dispatch(Show(Screen.login, animated: true))
+            self.dispatch(Show(Screen.registerLogin, animated: true))
         }
         self.rootView.didRegistrationTap = { [unowned self] registration in
 //            guard !self.store.state.session.isLogged else { return }
@@ -93,9 +106,13 @@ extension RootViewController: RoutableWithConfiguration {
                 c.modalPresentationStyle = .fullScreen
                 return c
             },
-            .show(Screen.login): .presentModally { [unowned self] _ in
+            .show(Screen.registerLogin): .presentModally { [unowned self] _ in
                 let c = LoginViewController(store: self.store)
                 c.modalPresentationStyle = .overCurrentContext
+                return c
+            },
+            .show(Screen.wizardWelcome): .push { [unowned self] _ in
+                let c = WizardWelcomeViewController(store: self.store)
                 return c
             },
         ]

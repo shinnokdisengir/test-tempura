@@ -23,11 +23,3 @@ struct OAuth: Codable {
         case refresh_token
     }
 }
-
-struct Authentication {
-    let accessToken: String
-    let expiresIn: Int
-    let tokenType: String
-    let scope: String?
-    let refreshToken: String
-}

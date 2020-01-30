@@ -1,39 +1,35 @@
 //
-//  WizardViewController.swift
+//  HomeViewController.swift
 //  TestTempura
 //
-//  Created by Gabriele Ghio on 27/01/2020.
+//  Created by Gabriele Ghio on 30/01/2020.
 //  Copyright © 2020 Occhidelfato. All rights reserved.
 //
 
 import Foundation
-import Tempura
 import Katana
+import Tempura
 
 // MARK: - Local State
 
-struct WelcomeLocalState: LocalState {
-    //  var selectedSection: RootView.Section = .todo
-}
+struct HomeLocalState: LocalState {}
 
 // MARK: - ViewController
 
-class WelcomeViewController: ViewControllerWithLocalState<WelcomeView> {
-
+class HomeViewController: ViewControllerWithLocalState<HomeView> {
     init(store: PartialStore<AppState>) {
-      super.init(store: store, localState: WelcomeLocalState(), connected: false)
-      
+        super.init(store: store, localState: HomeLocalState(), connected: false)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
-      super.viewDidAppear(animated)
+        super.viewDidAppear(animated)
 //      self.rootView.textField.becomeFirstResponder()
     }
-    
+
     override func setup() {}
 
     override func setupInteraction() {}
@@ -41,14 +37,14 @@ class WelcomeViewController: ViewControllerWithLocalState<WelcomeView> {
 
 // MARK: - Routing
 
-extension WelcomeViewController: RoutableWithConfiguration {
+extension HomeViewController: RoutableWithConfiguration {
     var routeIdentifier: RouteElementIdentifier {
-        return Screen.wizardWelcome.rawValue
+        return Screen.home.rawValue
     }
 
     var navigationConfiguration: [NavigationRequest: NavigationInstruction] {
         return [
-            .hide(Screen.wizardWelcome): .dismissModally(behaviour: .hard),
+            .hide(Screen.home): .dismissModally(behaviour: .hard),
         ]
     }
 }

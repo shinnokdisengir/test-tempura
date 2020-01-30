@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RootInstaller {
         /// because the navigator is instantiated by the Store.
         /// this in turn will invoke the `installRootMethod` of the rootInstaller (self)
         let navigator: Navigator! = self.store!.dependencies.navigator
-        navigator.start(using: self, in: self.window!, at: Screen.root)
+        navigator.start(using: self, in: self.window!, at: Screen.splash)
 
         return true
     }
@@ -33,9 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RootInstaller {
     /// install the root of the app
     /// this method is called by the navigator when needed
     func installRoot(identifier: RouteElementIdentifier, context: Any?, completion: () -> ()) -> Bool {
-        if identifier == Screen.root.rawValue {
+        if identifier == Screen.splash.rawValue {
             let rootViewController = RootViewController(store: self.store, localState: RootLocalState())
-            self.window?.rootViewController = rootViewController
+            let navigationController = UINavigationController(rootViewController: rootViewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            navigationController.isNavigationBarHidden = true
+            self.window?.rootViewController = navigationController
             completion()
             return true
         }

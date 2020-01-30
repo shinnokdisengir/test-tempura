@@ -11,13 +11,19 @@ import Foundation
 // MARK: - Screens identifiers
 
 enum Screen: String {
-    case root
+    
     case splash
+    
+    case root
+    
+    case wizardWelcome
+    case wizardRegisterLogin
+    case wizardGeo
+    case wizardFinish
+    
     case home
-    case login
-    case welcome
-    case push
+    
+    case registerLogin
     case geo
-    case register
     case list
 }
