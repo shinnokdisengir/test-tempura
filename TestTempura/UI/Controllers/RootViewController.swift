@@ -26,16 +26,20 @@ class RootViewController: ViewControllerWithLocalState<RootView> {
         self.add(self.splashViewController, in: self.rootView.childViewContainer)
         
         self.isHeroEnabled = true
+
+        // Read logged session
+        self.dispatch(ReadSession())
         
-//        self.dispatch(Show(Screen.splash, animated: false))
-        
-//        async(in: .background) {
-//            try? await(self.dispatch(ReadSession()))
-//            if !self.store.state.session.isWizardCompleted {
-//                self.dispatch(Show(Screen.wizardWelcome, animated: true))
-//                return
-//            }
-//        }
+        // Manage splash-screen, not beatiful...
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [unowned self] _ in
+            self.splashViewController.view.isHidden = true
+            self.splashViewController.removeFromParent()
+            
+            if !self.store.state.session.isWizardCompleted {
+                self.dispatch(Show(Screen.wizardWelcome, animated: true))
+                return
+            }
+        }
     }
 
     // listen for interactions from the view

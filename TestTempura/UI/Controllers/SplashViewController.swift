@@ -29,17 +29,6 @@ class SplashViewController: ViewControllerWithLocalState<SplashView> {
         fatalError("init(coder:) has not been implemented")
     }
 
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [unowned self] _ in
-//            self.dispatch(Hide())
-//            self.dismiss(animated: false)
-            self.view.isHidden = true
-        }
-    }
-
     override func setup() {
         self.isHeroEnabled = true
     }
