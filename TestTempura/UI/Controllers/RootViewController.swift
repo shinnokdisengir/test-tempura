@@ -34,7 +34,7 @@ class RootViewController: ViewControllerWithLocalState<RootView> {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [unowned self] _ in
             self.splashViewController.view.isHidden = true
             self.splashViewController.removeFromParent()
-            
+            debugPrint(self.store.state.session)
             if !self.store.state.session.isWizardCompleted {
                 self.dispatch(Show(Screen.wizardWelcome, animated: true))
                 return
